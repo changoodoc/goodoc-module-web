@@ -68,9 +68,9 @@ export default class GDWebModuleDate implements IGDWebModuleDate {
     switch (format) {
       case FORMAT['YYYY.MM.DD (WEEK) AMPM HH:mm']:
       case 1:
-        return `${date.year}.${date.month}.${date.day} (${date.week}) ${date.hourText} ${date.hour}:${date.minutes}`;
+        return `${date.year}.${date.month}.${date.day} (${date.weekText}) ${date.hourText} ${date.hour}:${date.minutes}`;
     }
-    return `${date.year}.${date.month}.${date.day} (${date.week}) ${date.hourText} ${date.hour}:${date.minutes}`;
+    return `${date.year}.${date.month}.${date.day} (${date.weekText}) ${date.hourText} ${date.hour}:${date.minutes}`;
   }
   private getWeekText(number: number = null): WEEK {
     switch (number) {
