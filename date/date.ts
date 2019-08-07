@@ -68,9 +68,9 @@ export default class GDWebModuleDate implements IGDWebModuleDate {
     switch (format) {
       case FORMAT['YYYY.MM.DD (WEEK) AMPM HH:mm']:
       case 1:
-        return `${date.year}.${date.month}.${date.day} (${date.weekText}) ${date.hourText} ${date.hour}:${date.minutes}`;
+        return `${date.year}.${date.month}.${date.day} (${date.weekText}) ${date.hourText} ${date.hourAmPm}:${date.minutes}`;
     }
-    return `${date.year}.${date.month}.${date.day} (${date.weekText}) ${date.hourText} ${date.hour}:${date.minutes}`;
+    return `${date.year}.${date.month}.${date.day} (${date.weekText}) ${date.hourText} ${date.hourAmPm}:${date.minutes}`;
   }
   private getWeekText(number: number = null): WEEK {
     switch (number) {
@@ -94,14 +94,14 @@ export default class GDWebModuleDate implements IGDWebModuleDate {
   private getTwo(number: number): string {
     return `${number > 9 ? '' : '0'}${number}`;
   }
-  private isAm(): boolean {
+  private isPm(): boolean {
     return !!(this._value.getHours() > 12);
   }
   private getHourAMPM() {
     const hour = this._value.getHours();
-    return this.isAm() ? hour % 12 : hour;
+    return this.isPm() ? hour % 12 : hour;
   }
   private getAmPmText(): AM_PM {
-    return this.isAm() ? '오전' : '오후';
+    return this.isPm() ? '오후' : '오전';
   }
 }
