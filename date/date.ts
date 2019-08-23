@@ -5,7 +5,7 @@ enum FORMAT {
   'YYYY.MM.DD (WEEK) AMPM HH:mm' = 1
 };
 
-interface DateStringObj {
+interface IDateStringObj {
   year: string;
   month: string;
   day: string;
@@ -50,7 +50,7 @@ export default class GDWebModuleDate implements IGDWebModuleDate {
     }
     return date;
   }
-  private toDateObj(value: Date): DateStringObj {
+  private toDateObj(value: Date): IDateStringObj {
     return {
       year: ('' + value.getFullYear()),
       month: this.getTwo(value.getMonth() + 1),
