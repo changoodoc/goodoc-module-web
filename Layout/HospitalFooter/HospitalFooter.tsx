@@ -1,7 +1,9 @@
 import * as React from "react";
-import { HospitalFooterLogo, HospitalFooterModel } from "./HospitalFooterModel";
+import { HOSPITAL_FOOTER_TXT, HOSPITAL_FOOTER_LOGO } from "./HospitalFooterModel";
+import "./HospitalFooter.scss";
 
-const HospitalFooter = (VersionTooltip: any, DividerVertical: any, FooterMenualFiles: any) => {
+const Empty = () => (<span></span>);
+const HospitalFooter = (DividerVertical: any, VersionTooltip: any = Empty, FooterMenualFiles: any = Empty) => {
     return ({
                 isLogin = true,
                 isFix = false
@@ -30,39 +32,39 @@ const HospitalFooter = (VersionTooltip: any, DividerVertical: any, FooterMenualF
                                     className="Footer__col1--section1 usage"
                                     onClick={openNewLink("usage")}
                                 >
-                                    {HospitalFooterModel.usage}
+                                    {HOSPITAL_FOOTER_TXT.usage}
                                 </div>
                                 <div
                                     className="Footer__col1--section1 privacy"
                                     onClick={openNewLink("privacy")}
                                 >
-                                    {HospitalFooterModel.privacy}
+                                    {HOSPITAL_FOOTER_TXT.privacy}
                                 </div>
                                 <div
                                     className="Footer__col1--section1 alliance"
                                     onClick={openNewLink("alliance")}
                                 >
-                                    {HospitalFooterModel.alliance}
+                                    {HOSPITAL_FOOTER_TXT.alliance}
                                 </div>
                             </div>
                             <div className="Footer__col1--section2">
-                                <img className="Footer__logo" src={HospitalFooterLogo} alt="Carelabs Logo" />
+                                <img className="Footer__logo" src={HOSPITAL_FOOTER_LOGO} alt="Carelabs Logo" />
                                 <div className="Footer__info">
                                     {
                                         [
-                                            HospitalFooterModel.componayName,
-                                            HospitalFooterModel.ceo,
-                                            HospitalFooterModel.regCode,
-                                            HospitalFooterModel.phone,
-                                            HospitalFooterModel.code,
-                                            HospitalFooterModel.addr,
-                                            HospitalFooterModel.allRight
+                                            HOSPITAL_FOOTER_TXT.componayName,
+                                            HOSPITAL_FOOTER_TXT.ceo,
+                                            HOSPITAL_FOOTER_TXT.regCode,
+                                            HOSPITAL_FOOTER_TXT.phone,
+                                            HOSPITAL_FOOTER_TXT.code,
+                                            HOSPITAL_FOOTER_TXT.addr,
+                                            HOSPITAL_FOOTER_TXT.allRight
                                         ].map((item, idx) => {
                                             return (
                                                 <>
                                                     {item}
                                                     {idx === 4 || idx === 6 ?
-                                                        (idx === 4 ? <br/> : <VersionTooltip/>)
+                                                        (idx === 4 ? <br/> : (<VersionTooltip/> || ''))
                                                         :
                                                         <DividerVertical color={idx === 5 ? 'black' : 'gray'} />
                                                     }
@@ -75,7 +77,7 @@ const HospitalFooter = (VersionTooltip: any, DividerVertical: any, FooterMenualF
                         </div>
                         <div className={`Footer__col2${isLogin ? "" : " bottom"}`}>
                             <div className="Footer__col2--section1">
-                                {isLogin ? <FooterMenualFiles /> : null}
+                                {isLogin ? (<FooterMenualFiles /> || '') : null}
                             </div>
                         </div>
                     </section>
