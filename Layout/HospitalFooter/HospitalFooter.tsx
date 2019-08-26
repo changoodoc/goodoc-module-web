@@ -62,14 +62,14 @@ const HospitalFooter = (DividerVertical: any, VersionTooltip: any = Empty, Foote
                                             HOSPITAL_FOOTER_TXT.allRight
                                         ].map((item, idx) => {
                                             return (
-                                                <>
+                                                <span key={idx}>
                                                     {item}
                                                     {idx === 4 || idx === 6 ?
                                                         (idx === 4 ? <br/> : (<VersionTooltip/> || ''))
                                                         :
                                                         <DividerVertical color={idx === 5 ? 'black' : 'gray'} />
                                                     }
-                                                </>
+                                                </span>
                                             )
                                         })
                                     }
