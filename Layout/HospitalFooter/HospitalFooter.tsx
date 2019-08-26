@@ -2,7 +2,7 @@ import * as React from "react";
 import { HOSPITAL_FOOTER_TXT, HOSPITAL_FOOTER_LOGO } from "./HospitalFooterModel";
 import "./HospitalFooter.scss";
 
-const Empty = () => (<span></span>);
+const Empty = () => (<span />);
 const HospitalFooter = (DividerVertical: any, VersionTooltip: any = Empty, FooterMenualFiles: any = Empty) => {
     return ({
                 isLogin = true,
