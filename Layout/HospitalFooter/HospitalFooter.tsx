@@ -2,6 +2,8 @@ import * as React from "react";
 import { HOSPITAL_FOOTER_TXT, HOSPITAL_FOOTER_LOGO } from "./HospitalFooterModel";
 import "./HospitalFooter.scss";
 
+const hostname = window.location.hostname;
+const link = hostname === 'www.goodoc.co.kr' || hostname === 'goodoc.co.kr' ? 'https://hello.goodoc.co.kr' : 'https://hello-staging.goodoc.co.kr';
 const Empty = () => (<span />);
 const HospitalFooter = (DividerVertical: any, VersionTooltip: any = Empty, FooterMenualFiles: any = Empty) => {
     return ({
@@ -12,13 +14,12 @@ const HospitalFooter = (DividerVertical: any, VersionTooltip: any = Empty, Foote
         isFix?: boolean;
     }) => {
         const openNewLink = (target: "usage" | "privacy" | "alliance") => () => {
-            const host = 'https://hello-staging.goodoc.co.kr';
             switch (target) {
                 case "alliance":
-                    window.open(`${host}/allance`);
+                    window.open(`${link}/alliance`);
                     break;
                 default:
-                    window.open(`${host}/term#${target}`);
+                    window.open(`${link}/term#${target}`);
                     break;
             }
         };
