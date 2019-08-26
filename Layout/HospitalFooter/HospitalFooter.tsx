@@ -19,7 +19,7 @@ const HospitalFooter = (DividerVertical: any, VersionTooltip: any = Empty, Foote
                     window.open(`${link}/alliance`);
                     break;
                 default:
-                    window.open(`${link}/term#${target}`);
+                    window.open(`${link}/term/#/${target}`);
                     break;
             }
         };
