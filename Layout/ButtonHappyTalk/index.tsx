@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-import "./style.css";
+import "./style.scss";
 import Icon from "./Icon";
 import { BUTTON_URL } from "../../config";
 
