@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import './style.css';
 import Icon from './Icon';
 
-interface ButtonHappyTalk {
+interface IButtonHappyTalk {
   href: string;
   style?: React.CSSProperties;
   windowSize?: {
@@ -12,7 +12,7 @@ interface ButtonHappyTalk {
   }
 }
 
-const ButtonHappyTalk: React.FC<ButtonHappyTalk> = ({ href, style }) => {
+const ButtonHappyTalk: React.FC<IButtonHappyTalk> = ({ href, style }) => {
   const innerWidth = useRef(0);
 
   useEffect(() => {
