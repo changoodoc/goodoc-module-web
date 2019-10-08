@@ -1,18 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
-import './style.css';
-import Icon from './Icon';
+import "./style.css";
+import Icon from "./Icon";
+import { BUTTON_URL } from "../../config";
 
 interface IButtonHappyTalk {
-  href: string;
   style?: React.CSSProperties;
   windowSize?: {
     width: number;
     height: number;
-  }
+  };
 }
 
-const ButtonHappyTalk: React.FC<IButtonHappyTalk> = ({ href, style }) => {
+const ButtonHappyTalk: React.FC<IButtonHappyTalk> = ({ style }) => {
   const innerWidth = useRef(0);
 
   useEffect(() => {
@@ -21,18 +21,18 @@ const ButtonHappyTalk: React.FC<IButtonHappyTalk> = ({ href, style }) => {
 
   const openHappyTalk = () => {
     window.open(
-      href,
+      BUTTON_URL.happyTalk,
       "",
-      `width=500, height=800, left=${innerWidth.current - 125}`
+      `width=500, height=800, left=${innerWidth.current}`
     );
-  }
+  };
 
   return (
     <button onClick={openHappyTalk} className="HappyTalk__button" style={style}>
       <Icon />
       <span className="HappyTalk__button--title">1:1 채팅상담</span>
     </button>
-  )
-}
+  );
+};
 
 export default ButtonHappyTalk;
