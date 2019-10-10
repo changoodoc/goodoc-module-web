@@ -29,18 +29,18 @@ const HospitalFooter = (DividerVertical: any, VersionTooltip: any = Empty, Foote
                     <section className="Footer__section1">
                         <div className="Footer__col1">
                             <div className="Footer__col1--section1">
-                                <div
-                                    className="Footer__col1--section1 usage"
-                                    onClick={openNewLink("usage")}
-                                >
-                                    {HOSPITAL_FOOTER_TXT.usage}
-                                </div>
-                                <div
-                                    className="Footer__col1--section1 privacy"
-                                    onClick={openNewLink("privacy")}
-                                >
-                                    {HOSPITAL_FOOTER_TXT.privacy}
-                                </div>
+                                {/*<div*/}
+                                {/*    className="Footer__col1--section1 usage"*/}
+                                {/*    onClick={openNewLink("usage")}*/}
+                                {/*>*/}
+                                {/*    {HOSPITAL_FOOTER_TXT.usage}*/}
+                                {/*</div>*/}
+                                {/*<div*/}
+                                {/*    className="Footer__col1--section1 privacy"*/}
+                                {/*    onClick={openNewLink("privacy")}*/}
+                                {/*>*/}
+                                {/*    {HOSPITAL_FOOTER_TXT.privacy}*/}
+                                {/*</div>*/}
                                 <div
                                     className="Footer__col1--section1 alliance"
                                     onClick={openNewLink("alliance")}
@@ -53,19 +53,19 @@ const HospitalFooter = (DividerVertical: any, VersionTooltip: any = Empty, Foote
                                 <div className="Footer__info">
                                     {
                                         [
-                                            HOSPITAL_FOOTER_TXT.componayName,
-                                            HOSPITAL_FOOTER_TXT.ceo,
-                                            HOSPITAL_FOOTER_TXT.regCode,
-                                            HOSPITAL_FOOTER_TXT.phone,
-                                            HOSPITAL_FOOTER_TXT.code,
+                                            // HOSPITAL_FOOTER_TXT.componayName,
+                                            // HOSPITAL_FOOTER_TXT.ceo,
+                                            // HOSPITAL_FOOTER_TXT.regCode,
+                                            // HOSPITAL_FOOTER_TXT.phone,
+                                            // HOSPITAL_FOOTER_TXT.code,
                                             HOSPITAL_FOOTER_TXT.addr,
                                             HOSPITAL_FOOTER_TXT.allRight
                                         ].map((item, idx) => {
                                             return (
                                                 <span key={idx}>
                                                     {item}
-                                                    {idx === 4 || idx === 6 ?
-                                                        (idx === 4 ? <br/> : (<VersionTooltip/> || ''))
+                                                    {idx === 1 || idx === 1 ?
+                                                        (<VersionTooltip/> || '')
                                                         :
                                                         <DividerVertical color={idx === 5 ? 'black' : 'gray'} />
                                                     }
