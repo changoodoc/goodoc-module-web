@@ -12,7 +12,7 @@ $sub_color_6: #e8e8e8;
   background-color: white;
   font-size: $font_size_x1-5;
   font-weight: 500;
-  height: 144px;
+  height: 98px;
   position: relative;
   width: 100%;
   bottom: 0;
@@ -29,7 +29,6 @@ $sub_color_6: #e8e8e8;
   }
 
   &__container {
-    padding-top: $spacing_unit_x3-25;
     max-width: 100%;
     width: $width;
     margin: 0 auto;
@@ -43,6 +42,7 @@ $sub_color_6: #e8e8e8;
   &__info {
     margin-left: 2rem;
     font-weight: normal;
+    display: grid;
   }
 
   &__section1 {
@@ -56,26 +56,6 @@ $sub_color_6: #e8e8e8;
       font-size: $font_size_x1-75;
       display: flex;
 
-      &.usage {
-        width: 10rem;
-      }
-
-      &.usage:hover {
-        cursor: pointer;
-      }
-
-      &.privacy {
-        width: 14rem;
-        font-weight: bold;
-      }
-
-      &.privacy:hover {
-        cursor: pointer;
-      }
-
-      &.alliance:hover {
-        cursor: pointer;
-      }
     }
 
     &--section2 {
@@ -112,11 +92,9 @@ $sub_color_6: #e8e8e8;
     }
 
     &--section1 {
-      .Footer__urls {
-        display: flex;
-        flex-direction: column;
-        text-align: right;
-      }
+      align-items: center;
+      display: flex;
+      padding-top: 2.8rem;
     }
   }
 
@@ -129,7 +107,7 @@ $sub_color_6: #e8e8e8;
   }
 
   &__menuals {
-    width: 27.4rem;
+    width: 37.4rem;
 
     &--title {
       font-size: 1.6rem;
@@ -138,13 +116,14 @@ $sub_color_6: #e8e8e8;
     }
 
     &--button {
-      display: inline-block;
+      display: flex;
       width: 27rem;
       max-width: 27rem;
       margin-right: 3rem;
       margin-bottom: 1.2rem;
       .ant-btn {
         height: 4.4rem;
+        margin-right: 2.4rem;
       }
     }
   }
