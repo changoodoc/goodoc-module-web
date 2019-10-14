@@ -107,7 +107,7 @@ $sub_color_6: #e8e8e8;
   }
 
   &__menuals {
-    width: 37.4rem;
+    width: 38.8rem;
 
     &--title {
       font-size: 1.6rem;
@@ -117,12 +117,10 @@ $sub_color_6: #e8e8e8;
 
     &--button {
       display: flex;
-      width: 27rem;
-      max-width: 27rem;
-      margin-right: 3rem;
       margin-bottom: 1.2rem;
+      justify-content: flex-end;
       .ant-btn {
-        height: 4.4rem;
+        height: 3.8rem;
         margin-right: 2.4rem;
       }
     }
@@ -156,5 +154,3 @@ $sub_color_6: #e8e8e8;
     background-color: rgb(43, 43, 43);
   }
 }
-
-
