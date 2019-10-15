@@ -14,6 +14,7 @@ export interface IDataTracker {
   setPageViewAutoClicks(): void;
   getTrackerId(): Promise<DATA_TRACKER.TrackerId>;
   getTrackerIdByPageViewAutoClicks(): Promise<DATA_TRACKER.TrackerId>;
+  trackRequest(path: string, body: string, token: string, code: string, message: string, table?: string): void;
 }
 
 const HOST = 'in.treasuredata.com';
@@ -109,6 +110,21 @@ export default class DataTracker implements IDataTracker {
         })
       }
     })
+  }
+  trackRequest(path: string, body: string, token: string, code: string, message: string, table: string): void {
+    try {
+      const data = {
+        gd_type: 'request',
+        gd_path: path,
+        gd_body: body,
+        gd_token: token,
+        gd_code: code,
+        gd_message: message
+      };
+      this._td.trackEvent(table, data);
+    } catch (e) {
+      console.error(e.message);
+    }
   }
   // 핑거 프린트가 세팅된 후부터 트래킹을 시작한다.
   protected setConfig(id): void {
