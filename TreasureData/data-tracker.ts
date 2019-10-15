@@ -1,19 +1,17 @@
 import Treasure from 'td-js-sdk';
 import Fingerprint2 from 'fingerprintjs2';
 
-export declare namespace DATA_TRACKER {
-  type FingerPrintId = string;
-  type TreasureDataId = string;
-  export type TrackerId = {
-    fingerPrintId: FingerPrintId;
-    treasureDataId: TreasureDataId;
-  }
+type DTFingerPrintId = string;
+type DTTreasureDataId = string;
+type DTTrackerId = {
+  fingerPrintId: DTFingerPrintId;
+  treasureDataId: DTTreasureDataId;
 }
 
 export interface IDataTracker {
   setPageViewAutoClicks(): void;
-  getTrackerId(): Promise<DATA_TRACKER.TrackerId>;
-  getTrackerIdByPageViewAutoClicks(): Promise<DATA_TRACKER.TrackerId>;
+  getTrackerId(): Promise<DTTrackerId>;
+  getTrackerIdByPageViewAutoClicks(): Promise<DTTrackerId>;
   trackRequest(path: string, body: string, token: string, code: string, message: string, table?: string): void;
 }
 
@@ -28,8 +26,8 @@ export default class DataTracker implements IDataTracker {
     );
   };
   private _td: Treasure;
-  private _treasureDataId: DATA_TRACKER.TreasureDataId;
-  private _fingerprintId: DATA_TRACKER.FingerPrintId;
+  private _treasureDataId: DTTreasureDataId;
+  private _fingerprintId: DTFingerPrintId;
   constructor(
     database: string,
     private _table: string
@@ -55,7 +53,7 @@ export default class DataTracker implements IDataTracker {
       console.error(err.message);
     }
   };
-  getTrackerId(): Promise<DATA_TRACKER.TrackerId> {
+  getTrackerId(): Promise<DTTrackerId> {
     return new Promise((resolve) => {
       try {
         if(this._fingerprintId) {
@@ -82,7 +80,7 @@ export default class DataTracker implements IDataTracker {
       }
     })
   };
-  getTrackerIdByPageViewAutoClicks(): Promise<DATA_TRACKER.TrackerId> {
+  getTrackerIdByPageViewAutoClicks(): Promise<DTTrackerId> {
     return new Promise((resolve) => {
       try {
         if(this._fingerprintId) {

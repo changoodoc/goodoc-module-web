@@ -1,6 +1,9 @@
-import {IDataTracker} from './interface-data-tracker';
+import {IDataTracker} from './data-tracker';
 
 export const DataTrackerStub: IDataTracker = {
+  trackRequest: jest.fn().mockImplementation((path: string, body: string, token: string, code: string, message: string, table: string) => {
+    return null;
+  }),
   setPageViewAutoClicks: jest.fn().mockImplementation(() => {
     return null;
   }),
