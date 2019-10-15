@@ -1,7 +1,20 @@
 import Treasure from 'td-js-sdk';
 import Fingerprint2 from 'fingerprintjs2';
 
-import {IDataTracker, DATA_TRACKER} from './interface-data-tracker';
+export declare namespace DATA_TRACKER {
+  type FingerPrintId = string;
+  type TreasureDataId = string;
+  export type TrackerId = {
+    fingerPrintId: FingerPrintId;
+    treasureDataId: TreasureDataId;
+  }
+}
+
+export interface IDataTracker {
+  setPageViewAutoClicks(): void;
+  getTrackerId(): Promise<DATA_TRACKER.TrackerId>;
+  getTrackerIdByPageViewAutoClicks(): Promise<DATA_TRACKER.TrackerId>;
+}
 
 const HOST = 'in.treasuredata.com';
 const WRITE_KEY = '9525/8390cc895a8785a913ecef0751d5c2a44760f1a0';
@@ -14,8 +27,8 @@ export default class DataTracker implements IDataTracker {
     );
   };
   private _td: Treasure;
-  private treasureDataId: string;
-  private fingerprintId: string;
+  private _treasureDataId: DATA_TRACKER.TreasureDataId;
+  private _fingerprintId: DATA_TRACKER.FingerPrintId;
   constructor(
     database: string,
     private _table: string
@@ -28,13 +41,13 @@ export default class DataTracker implements IDataTracker {
   }
   setPageViewAutoClicks(): void {
     try {
-      if(this.fingerprintId) {
-        this.commandTrackerPageViewClicks(this.fingerprintId);
+      if(this._fingerprintId) {
+        this.commandTrackerPageViewClicks(this._fingerprintId);
       } else {
         Fingerprint2.getV18({}, (id) => {
           this.commandTrackerPageViewClicks(id);
-          this.fingerprintId = id;
-          this.treasureDataId = this._td.getCookie('_td');
+          this._fingerprintId = id;
+          this._treasureDataId = this._td.getCookie('_td');
         });
       }
     } catch(err) {
@@ -44,18 +57,18 @@ export default class DataTracker implements IDataTracker {
   getTrackerId(): Promise<DATA_TRACKER.TrackerId> {
     return new Promise((resolve) => {
       try {
-        if(this.fingerprintId) {
+        if(this._fingerprintId) {
           resolve({
-            fingerPrintId: this.fingerprintId,
-            treasureDataId: this.treasureDataId,
+            fingerPrintId: this._fingerprintId,
+            treasureDataId: this._treasureDataId,
           })
         } else {
           Fingerprint2.getV18({}, (id) => {
-            this.fingerprintId = id;
-            this.treasureDataId = this._td.getCookie('_td');
+            this._fingerprintId = id;
+            this._treasureDataId = this._td.getCookie('_td');
             resolve({
-              fingerPrintId: this.fingerprintId,
-              treasureDataId: this.treasureDataId
+              fingerPrintId: this._fingerprintId,
+              treasureDataId: this._treasureDataId
             });
           });
         }
@@ -71,20 +84,20 @@ export default class DataTracker implements IDataTracker {
   getTrackerIdByPageViewAutoClicks(): Promise<DATA_TRACKER.TrackerId> {
     return new Promise((resolve) => {
       try {
-        if(this.fingerprintId) {
-          this.commandTrackerPageViewClicks(this.fingerprintId);
+        if(this._fingerprintId) {
+          this.commandTrackerPageViewClicks(this._fingerprintId);
           resolve({
-            fingerPrintId: this.fingerprintId,
-            treasureDataId: this.treasureDataId,
+            fingerPrintId: this._fingerprintId,
+            treasureDataId: this._treasureDataId,
           })
         } else {
           Fingerprint2.getV18({}, (id) => {
             this.commandTrackerPageViewClicks(id);
-            this.fingerprintId = id;
-            this.treasureDataId = this._td.getCookie('_td');
+            this._fingerprintId = id;
+            this._treasureDataId = this._td.getCookie('_td');
             resolve({
-              fingerPrintId: this.fingerprintId,
-              treasureDataId: this.treasureDataId
+              fingerPrintId: this._fingerprintId,
+              treasureDataId: this._treasureDataId
             });
           });
         }
@@ -98,18 +111,18 @@ export default class DataTracker implements IDataTracker {
     })
   }
   // 핑거 프린트가 세팅된 후부터 트래킹을 시작한다.
-  protected setConfig(id) {
+  protected setConfig(id): void {
     this._td.set('$global', 'td_fingerprint_id', id);
     this._td.setSignedMode();
   }
-  protected setAutoClicks() {
+  protected setAutoClicks(): void {
     // Setup an event listener to automatically log clicks.
     this._td.trackClicks();
   }
-  protected setPageView() {
+  protected setPageView(): void {
     this._td.trackPageview('pageviews');
   }
-  protected commandTrackerPageViewClicks(id) {
+  protected commandTrackerPageViewClicks(id): void {
     this.setConfig(id);
     this.setAutoClicks();
     this.setPageView();
