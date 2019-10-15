@@ -1,9 +1,9 @@
 import Treasure from 'td-js-sdk';
 import Fingerprint2 from 'fingerprintjs2';
 
-type DTFingerPrintId = string;
-type DTTreasureDataId = string;
-type DTTrackerId = {
+export type DTFingerPrintId = string;
+export type DTTreasureDataId = string;
+export type DTTrackerId = {
   fingerPrintId: DTFingerPrintId;
   treasureDataId: DTTreasureDataId;
 }
