@@ -109,6 +109,13 @@ export default class DataTracker implements IDataTracker {
       }
     })
   }
+  trackData(table: string, data: object): void {
+    try {
+      this._td.trackEvent(table, data);
+    } catch (e) {
+      console.error(e.message);
+    }
+  }
   trackRequest(path: string, body: string, token: string, code: string, message: string, table: string): void {
     try {
       const data = {
