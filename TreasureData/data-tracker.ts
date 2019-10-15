@@ -26,36 +26,21 @@ export default class DataTracker implements IDataTracker {
       database,
     });
   }
-  setTracker(): Promise<DATA_TRACKER.TrackerId> {
-    return new Promise((resolve) => {
-      try {
-        if(this.fingerprintId) {
-          this.commandTrackerPageViewClicks(this.fingerprintId);
-          resolve({
-            fingerPrintId: this.fingerprintId,
-            treasureDataId: this.treasureDataId,
-          })
-        } else {
-          Fingerprint2.getV18({}, (id) => {
-            this.commandTrackerPageViewClicks(id);
-            this.fingerprintId = id;
-            this.treasureDataId = this._td.getCookie('_td');
-            resolve({
-              fingerPrintId: this.fingerprintId,
-              treasureDataId: this.treasureDataId
-            });
-          });
-        }
-      } catch(err) {
-        console.error(err.message);
-        resolve({
-          fingerPrintId: '',
-          treasureDataId: '',
-        })
+  setPageViewAutoClicks(): void {
+    try {
+      if(this.fingerprintId) {
+        this.commandTrackerPageViewClicks(this.fingerprintId);
+      } else {
+        Fingerprint2.getV18({}, (id) => {
+          this.commandTrackerPageViewClicks(id);
+          this.fingerprintId = id;
+          this.treasureDataId = this._td.getCookie('_td');
+        });
       }
-    })
+    } catch(err) {
+      console.error(err.message);
+    }
   };
-
   getTrackerId(): Promise<DATA_TRACKER.TrackerId> {
     return new Promise((resolve) => {
       try {
@@ -83,6 +68,35 @@ export default class DataTracker implements IDataTracker {
       }
     })
   };
+  getTrackerIdByPageViewAutoClicks(): Promise<DATA_TRACKER.TrackerId> {
+    return new Promise((resolve) => {
+      try {
+        if(this.fingerprintId) {
+          this.commandTrackerPageViewClicks(this.fingerprintId);
+          resolve({
+            fingerPrintId: this.fingerprintId,
+            treasureDataId: this.treasureDataId,
+          })
+        } else {
+          Fingerprint2.getV18({}, (id) => {
+            this.commandTrackerPageViewClicks(id);
+            this.fingerprintId = id;
+            this.treasureDataId = this._td.getCookie('_td');
+            resolve({
+              fingerPrintId: this.fingerprintId,
+              treasureDataId: this.treasureDataId
+            });
+          });
+        }
+      } catch(err) {
+        console.error(err.message);
+        resolve({
+          fingerPrintId: '',
+          treasureDataId: '',
+        })
+      }
+    })
+  }
   // 핑거 프린트가 세팅된 후부터 트래킹을 시작한다.
   protected setConfig(id) {
     this._td.set('$global', 'td_fingerprint_id', id);

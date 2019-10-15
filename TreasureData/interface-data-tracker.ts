@@ -8,6 +8,7 @@ export declare namespace DATA_TRACKER {
 }
 
 export interface IDataTracker {
-  setTracker(): Promise<DATA_TRACKER.TrackerId>;
+  setPageViewAutoClicks(): void;
   getTrackerId(): Promise<DATA_TRACKER.TrackerId>;
+  getTrackerIdByPageViewAutoClicks(): Promise<DATA_TRACKER.TrackerId>;
 }
