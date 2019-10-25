@@ -15,6 +15,9 @@ export default class FormElementsParser {
               const checked = el['checked'];
               this._value[name] = checked;
               break;
+            case "textarea":
+              this._value[name] = value;
+              break;
           }
         }
         // console.group();
