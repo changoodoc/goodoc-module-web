@@ -28,26 +28,6 @@ const HospitalFooter = (DividerVertical: any, VersionTooltip: any = Empty, Foote
                 <div className="Footer__container">
                     <section className="Footer__section1">
                         <div className="Footer__col1">
-                            <div className="Footer__col1--section1">
-                                <div
-                                    className="Footer__col1--section1 usage"
-                                    onClick={openNewLink("usage")}
-                                >
-                                    {HOSPITAL_FOOTER_TXT.usage}
-                                </div>
-                                <div
-                                    className="Footer__col1--section1 privacy"
-                                    onClick={openNewLink("privacy")}
-                                >
-                                    {HOSPITAL_FOOTER_TXT.privacy}
-                                </div>
-                                <div
-                                    className="Footer__col1--section1 alliance"
-                                    onClick={openNewLink("alliance")}
-                                >
-                                    {HOSPITAL_FOOTER_TXT.alliance}
-                                </div>
-                            </div>
                             <div className="Footer__col1--section2">
                                 <img className="Footer__logo" src={HOSPITAL_FOOTER_LOGO} alt="Carelabs Logo" />
                                 <div className="Footer__info">
