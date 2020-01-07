@@ -26,7 +26,7 @@ const HospitalFooter = (DividerVertical: any, VersionTooltip: any = Empty, Foote
                                         ].map((item, idx) => {
                                             return (
                                                 <span key={idx}>
-                                                {item}{idx === 1 && (<VersionTooltip/> || '')}
+                                                {item}{idx === 1 && (<VersionTooltip/> || '')}<br/>
                                               </span>
                                             )
                                         })
