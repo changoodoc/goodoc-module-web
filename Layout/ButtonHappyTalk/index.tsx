@@ -29,7 +29,9 @@ const ButtonHappyTalk: React.FC<IButtonHappyTalk> = ({ style }) => {
 
   return (
     <button onClick={openHappyTalk} className="HappyTalk__button" style={style}>
-      <Icon />
+      <div className="HappyTalk__button--icon">
+        <Icon />
+      </div>
       <span className="HappyTalk__button--title">1:1 채팅상담</span>
     </button>
   );
