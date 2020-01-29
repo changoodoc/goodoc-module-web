@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './style.scss';
+import './style.css';
 import Icon from './Icon';
 
 interface IButtonHappyTalk {
@@ -10,9 +10,9 @@ interface IButtonHappyTalk {
 
 const ButtonHappyTalkB: React.FC<IButtonHappyTalk> = ({ style, onOpen }) => {
   return (
-    <button onClick={onOpen} className="HappyTalk__button" style={style}>
+    <button onClick={onOpen} className="HappyTalkB__button" style={style}>
       <Icon />
-      <span className="HappyTalk__button--title">1:1 채팅상담</span>
+      <span className="HappyTalkB__button--title">1:1 채팅상담</span>
     </button>
   );
 };
