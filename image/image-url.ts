@@ -15,7 +15,7 @@ class GDWebModuleImageUrl {
       if (index > -1) {
         // "http:/asset-staging.goodoc.kr/images/files/20190827/bbaded0aae64120b81a7ee466cc81c44.jpeg"
         result = result.substring(index);
-        result = result.replace('http%3A/', 'https://');
+        result = result.replace(/http(s?)\%3A\//, 'https://');
         result = decodeURIComponent(result);
       } else {
         result = originPath + result;
