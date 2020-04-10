@@ -9,10 +9,12 @@ export type DTTrackerId = {
 }
 
 export interface IDataTracker {
+  setAutoClicks(): void;
   setPageViewAutoClicks(): void;
   getTrackerId(): Promise<DTTrackerId>;
   getTrackerIdByPageViewAutoClicks(): Promise<DTTrackerId>;
   trackRequest(path: string, body: string, token: string, code: string, message: string, table?: string): void;
+  trackPageView(): void;
 }
 
 const HOST = 'in.treasuredata.com';
@@ -37,6 +39,21 @@ export default class DataTracker implements IDataTracker {
       writeKey: WRITE_KEY,
       database,
     });
+  }
+  setAutoClicks(): void {
+    try {
+      if(this._fingerprintId) {
+        this.commandTrackerClicks(this._fingerprintId);
+      } else {
+        Fingerprint2.getV18({}, (id) => {
+          this.commandTrackerClicks(id);
+          this._fingerprintId = id;
+          this._treasureDataId = this._td.getCookie('_td');
+        });
+      }
+    } catch(err) {
+      console.error(err.message);
+    }
   }
   setPageViewAutoClicks(): void {
     try {
@@ -131,21 +148,27 @@ export default class DataTracker implements IDataTracker {
       console.error(e.message);
     }
   }
+  trackPageView() {
+    this.setPageView();
+  }
   // 핑거 프린트가 세팅된 후부터 트래킹을 시작한다.
   protected setConfig(id): void {
     this._td.set('$global', 'td_fingerprint_id', id);
     this._td.setSignedMode();
   }
-  protected setAutoClicks(): void {
+  protected setTdAutoClicks(): void {
     // Setup an event listener to automatically log clicks.
     this._td.trackClicks();
   }
   protected setPageView(): void {
     this._td.trackPageview('pageviews');
   }
-  protected commandTrackerPageViewClicks(id): void {
+  protected commandTrackerClicks(id): void {
     this.setConfig(id);
-    this.setAutoClicks();
+    this.setTdAutoClicks();
+  }
+  protected commandTrackerPageViewClicks(id): void {
+    this.commandTrackerClicks(id);
     this.setPageView();
   }
 }

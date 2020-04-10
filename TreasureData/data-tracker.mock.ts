@@ -1,11 +1,19 @@
 import {IDataTracker} from './data-tracker';
+import Logger from '@goodoc-common/useCase/Log/logger';
 
 export const DataTrackerMock: IDataTracker = {
   trackRequest: (path: string, body: string, token: string, code: string, message: string, table: string) => {
-    console.log(path, body, token, code, message, table);
+    Logger.instance().onLog(path, body, token, code, message, table);
+    return null;
+  },
+  trackPageView: () => {
+    Logger.instance().onLog('pageviews');
     return null;
   },
   setPageViewAutoClicks: () => {
+    return null;
+  },
+  setAutoClicks: () => {
     return null;
   },
   getTrackerId: () => {
