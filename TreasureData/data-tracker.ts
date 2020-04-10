@@ -27,6 +27,8 @@ export default class DataTracker implements IDataTracker {
       DataTracker._instance || (DataTracker._instance = new DataTracker(database, table))
     );
   };
+  private run: boolean = false;
+  private cacheList = [];
   private _td: Treasure;
   private _treasureDataId: DTTreasureDataId;
   private _fingerprintId: DTFingerPrintId;
@@ -40,15 +42,27 @@ export default class DataTracker implements IDataTracker {
       database,
     });
   }
+  protected clearCache() {
+    if(!this.run) {
+      this.run = true;
+      this.cacheList.forEach((type) => {
+        if(type === 'pageviews') {
+          this.setPageView();
+        }
+      })
+    }
+  }
   setAutoClicks(): void {
     try {
       if(this._fingerprintId) {
         this.commandTrackerClicks(this._fingerprintId);
+        this.clearCache();
       } else {
         Fingerprint2.getV18({}, (id) => {
           this.commandTrackerClicks(id);
           this._fingerprintId = id;
           this._treasureDataId = this._td.getCookie('_td');
+          this.clearCache();
         });
       }
     } catch(err) {
@@ -149,7 +163,15 @@ export default class DataTracker implements IDataTracker {
     }
   }
   trackPageView() {
-    this.setPageView();
+    try {
+      if(this.run) {
+        this.setPageView();
+      } else {
+        this.cacheList.push('pageviews');
+      }
+    } catch(e) {
+      console.error(e.message);
+    }
   }
   // 핑거 프린트가 세팅된 후부터 트래킹을 시작한다.
   protected setConfig(id): void {
