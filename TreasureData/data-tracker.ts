@@ -46,8 +46,14 @@ export default class DataTracker implements IDataTracker {
     if(!this.run) {
       this.run = true;
       this.cacheList.forEach((type) => {
-        if(type === 'pageviews') {
-          this.setPageView();
+        if(typeof type === 'string') {
+          if(type === 'pageviews') {
+            this.setPageView();
+          }
+        } else if(typeof type === 'object') {
+          if(type['table'] && type['data']) {
+            this.trackData(type['table'], type['data']);
+          }
         }
       })
     }
@@ -142,8 +148,14 @@ export default class DataTracker implements IDataTracker {
   }
   trackData(table: string, data: object): void {
     try {
-      this._td.trackEvent(table, data);
-    } catch (e) {
+      if(this.run) {
+        this._td.trackEvent(table, data);
+      } else {
+        this.cacheList.push({
+          table, data
+        });
+      }
+    } catch(e) {
       console.error(e.message);
     }
   }
