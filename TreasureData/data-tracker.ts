@@ -146,7 +146,7 @@ export default class DataTracker implements IDataTracker {
       }
     })
   }
-  trackData(table: string, data: object): void {
+  trackData(table: string, data: object | string): void {
     try {
       if(this.run) {
         this._td.trackEvent(table, data);
