@@ -22,9 +22,9 @@ const WRITE_KEY = '9525/8390cc895a8785a913ecef0751d5c2a44760f1a0';
 
 export default class DataTracker implements IDataTracker {
   private static _instance: DataTracker = null;
-  static instance = (database: string, table?: string) => {
+  static instance = (database: string, version?: string) => {
     return (
-      DataTracker._instance || (DataTracker._instance = new DataTracker(database, table))
+      DataTracker._instance || (DataTracker._instance = new DataTracker(database, version))
     );
   };
   private run: boolean = false;
@@ -34,7 +34,7 @@ export default class DataTracker implements IDataTracker {
   private _fingerprintId: DTFingerPrintId;
   constructor(
     database: string,
-    private _table: string
+    private _version?: string
   ) {
     this._td = new Treasure({
       host: HOST,
@@ -187,6 +187,9 @@ export default class DataTracker implements IDataTracker {
   }
   // 핑거 프린트가 세팅된 후부터 트래킹을 시작한다.
   protected setConfig(id): void {
+    if(this._version) {
+      this._td.set('$global', 'gd_version', this._version);
+    }
     this._td.set('$global', 'td_fingerprint_id', id);
     this._td.setSignedMode();
   }
