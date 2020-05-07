@@ -1,5 +1,5 @@
 import {IDataTracker} from './data-tracker';
-import Logger from '@goodoc-common/useCase/Log/logger';
+import Logger from '@gd-common/useCase/Log/logger';
 
 export const DataTrackerMock: IDataTracker = {
   trackRequest: (path: string, body: string, token: string, code: string, message: string, table: string) => {
