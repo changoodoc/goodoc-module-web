@@ -124,6 +124,7 @@ export default class DataTracker implements IDataTracker {
       try {
         if(this._fingerprintId) {
           this.commandTrackerPageViewClicks(this._fingerprintId);
+          this.clearCache();
           resolve({
             fingerPrintId: this._fingerprintId,
             treasureDataId: this._treasureDataId,
@@ -133,6 +134,7 @@ export default class DataTracker implements IDataTracker {
             this.commandTrackerPageViewClicks(id);
             this._fingerprintId = id;
             this._treasureDataId = this._td.getCookie('_td');
+            this.clearCache();
             resolve({
               fingerPrintId: this._fingerprintId,
               treasureDataId: this._treasureDataId
