@@ -7,7 +7,7 @@ export const HOSPITAL_FOOTER_TXT = {
     allRight: 'ALL RIGHTS RESERVED ©GOODOC ',
     componayName: '주식회사 케어랩스',
     regCode: '사업자등록번호 220-88-36643',
-    ceo: '대표자 : 김동수, 박경득',
+    ceo: '대표자 : 박경득, 임진석',
     addr: '서울특별시 강남구 역삼로3길 13, 케어랩스타워 2~3층',
     goodocCEO: '굿닥 사업 대표 : 박경득',
     code: '통신판매업신고 제2011-서울강남-00557',
