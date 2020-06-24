@@ -4,6 +4,12 @@ export const DataTrackerStub: IDataTracker = {
   trackRequest: jest.fn().mockImplementation((path: string, body: string, token: string, code: string, message: string, table: string) => {
     return null;
   }),
+  trackPageView: jest.fn().mockImplementation(() => {
+    return null;
+  }),
+  setAutoClicks: jest.fn().mockImplementation(() => {
+    return null;
+  }),
   setPageViewAutoClicks: jest.fn().mockImplementation(() => {
     return null;
   }),

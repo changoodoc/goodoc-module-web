@@ -1,0 +1,55 @@
+$break-small: 580px;
+$theme-color: #3c82ff;
+$theme-color-hover: #134c8f;
+
+.HappyTalkA {
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: $theme-color;
+    background-color: white;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.1);
+    border: solid 2px #ffffff;
+    border-radius: 36px;
+    font-size: 22px;
+    padding: 15.5px 104.4px;
+    transition: all 0.5s;
+    @media screen and (max-width: $break-small) {
+      font-size: 14px;
+      padding: 12px 72px;
+    }
+    &:hover {
+      color: $theme-color;
+      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+
+    &:active {
+      color: #fff;
+      border: solid 2px $theme-color;
+      background-color: $theme-color;
+      outline: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &--title {
+      font-weight: bold;
+      margin-left: 1.2rem;
+      @media screen and (max-width: $break-small) {
+        margin-left: 0.8rem;
+      }
+    }
+    &--icon {
+      width: 24px;
+      height: 24px;
+      @media screen and (max-width: $break-small) {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

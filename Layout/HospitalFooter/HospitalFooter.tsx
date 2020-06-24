@@ -17,7 +17,7 @@ const HospitalFooter = (DividerVertical: any, VersionTooltip: any = Empty, Foote
                     <section className="Footer__section1">
                         <div className="Footer__col1">
                             <div className="Footer__col1--section2">
-                                <img className="Footer__logo" src={HOSPITAL_FOOTER_LOGO} alt="Carelabs Logo" />
+                                <img className="Footer__logo" src={HOSPITAL_FOOTER_LOGO} alt="Goodoc Logo" />
                                 <div className="Footer__info">
                                     {
                                         [
@@ -26,7 +26,7 @@ const HospitalFooter = (DividerVertical: any, VersionTooltip: any = Empty, Foote
                                         ].map((item, idx) => {
                                             return (
                                                 <span key={idx}>
-                                                {item}{idx === 1 && (<VersionTooltip/> || '')}
+                                                {item}{idx === 1 && (<VersionTooltip/> || '')}<br/>
                                               </span>
                                             )
                                         })
