@@ -3,6 +3,7 @@ $font_size_x1-75: 1.4rem;
 
 $spacing_unit_x3: 2.4rem;
 $spacing_unit_x3-25: 2.6rem;
+$spacing_unit_x5: 4rem;
 
 $width: 1366px;
 $main_color: #1662bb;
@@ -36,7 +37,7 @@ $sub_color_6: #e8e8e8;
 
   &__logo {
     width: auto;
-    height: $spacing_unit_x3;
+    height: $spacing_unit_x5;
   }
 
   &__info {
