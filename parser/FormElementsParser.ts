@@ -3,7 +3,7 @@ export default class FormElementsParser {
   constructor(form: HTMLFormElement, obj: any) {
     if (form && form.elements) {
       const list: HTMLFormControlsCollection = form.elements;
-      for (const el of list) {
+      for (const el of <any>list) {
         const name = el['name'];
         const value = el['value'];
         if (obj[name]) {

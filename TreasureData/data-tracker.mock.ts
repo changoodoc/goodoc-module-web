@@ -1,13 +1,12 @@
 import {IDataTracker} from './data-tracker';
-import Logger from '@gd-common/useCase/Log/logger';
 
 export const DataTrackerMock: IDataTracker = {
   trackRequest: (path: string, body: string, token: string, code: string, message: string, table: string) => {
-    Logger.instance().onLog(path, body, token, code, message, table);
+    console.log(path, body, token, code, message, table);
     return null;
   },
   trackPageView: () => {
-    Logger.instance().onLog('pageviews');
+    console.log('pageviews');
     return null;
   },
   setPageViewAutoClicks: () => {
