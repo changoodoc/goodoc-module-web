@@ -6,11 +6,11 @@ export const HOSPITAL_FOOTER_TXT = {
     email: 'partner@goodoc.co.kr',
     allRight: 'ALL RIGHTS RESERVED ©GOODOC ',
     componayName: '주식회사 굿닥',
-    regCode: '사업자등록번호 220-88-36643',
+    regCode: '사업자등록번호 -',
     ceo: '대표자 : 박경득, 임진석',
     addr: '서울특별시 강남구 역삼로3길 13, 케어랩스타워 2~3층',
     goodocCEO: '',
-    code: '통신판매업신고 제2011-서울강남-00557',
+    code: '통신판매업신고 -',
     desc: '주식회사 굿닥은 의료광고의 주체가 아니며, 각 의료광고의 주체는 해당 병원입니다. 의료광고에 대한 법적인 의무 및 책임은 각 의료광고의 주체에 있습니다.'
 };
 
