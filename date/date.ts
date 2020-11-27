@@ -95,11 +95,11 @@ export default class GDWebModuleDate implements IGDWebModuleDate {
     return `${number > 9 ? '' : '0'}${number}`;
   }
   private isPm(): boolean {
-    return !!(this._value.getHours() > 12);
+    return this._value.getHours() >= 12;
   }
   private getHourAMPM() {
     const hour = this._value.getHours();
-    return this.isPm() ? hour % 12 : hour;
+    return this.isPm() && hour > 12 ? hour % 12 : hour;
   }
   private getAmPmText(): AM_PM {
     return this.isPm() ? '오후' : '오전';
