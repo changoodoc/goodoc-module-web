@@ -1,4 +1,3 @@
-
 export default class GDWebModulePlatform {
   private readonly IS_AND: boolean;
   private readonly IS_IOS: boolean;
@@ -30,7 +29,7 @@ export default class GDWebModulePlatform {
     const userAgent = window.navigator.userAgent;
     const length = arg.length;
     for (let i = 0; i < length; i++) {
-      if(userAgent.indexOf(arg[i]) > 0) {
+      if (userAgent.indexOf(arg[i]) > 0) {
         return true;
       }
     }

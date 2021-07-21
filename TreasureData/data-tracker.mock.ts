@@ -1,7 +1,14 @@
-import {IDataTracker} from './data-tracker';
+import { IDataTracker } from './data-tracker';
 
 export const DataTrackerMock: IDataTracker = {
-  trackRequest: (path: string, body: string, token: string, code: string, message: string, table: string) => {
+  trackRequest: (
+    path: string,
+    body: string,
+    token: string,
+    code: string,
+    message: string,
+    table: string
+  ) => {
     console.log(path, body, token, code, message, table);
     return null;
   },
@@ -19,12 +26,12 @@ export const DataTrackerMock: IDataTracker = {
     return Promise.resolve({
       fingerPrintId: '{fingerPrintId}',
       treasureDataId: '{treasureDataId}'
-    })
+    });
   },
   getTrackerIdByPageViewAutoClicks: () => {
     return Promise.resolve({
       fingerPrintId: '{fingerPrintId}',
       treasureDataId: '{treasureDataId}'
-    })
-  },
+    });
+  }
 };

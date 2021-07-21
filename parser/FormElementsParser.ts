@@ -8,14 +8,14 @@ export default class FormElementsParser {
         const value = el['value'];
         if (obj[name]) {
           switch (obj[name].type) {
-            case "text":
+            case 'text':
               this._value[name] = value;
               break;
-            case "checkbox":
+            case 'checkbox':
               const checked = el['checked'];
               this._value[name] = checked;
               break;
-            case "textarea":
+            case 'textarea':
               this._value[name] = value;
               break;
           }

@@ -1,5 +1,13 @@
 export declare namespace DeepLinkSpace {
-  type ContentType = 'events' | 'casts' | 'nearmap' | 'hospitals' | 'pharmacys' | 'mypage' | 'events/packages' | 'main';
+  type ContentType =
+    | 'events'
+    | 'casts'
+    | 'nearmap'
+    | 'hospitals'
+    | 'pharmacys'
+    | 'mypage'
+    | 'events/packages'
+    | 'main';
   type AdditionPath = '/map';
   interface Parameter {
     contentId?: number; // 12345

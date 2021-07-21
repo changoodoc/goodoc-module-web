@@ -1,5 +1,5 @@
-import {DeepLink} from '../DeepLink/DeepLink';
-import {AppsflyerSpace} from './Appsflyer.namespace';
+import { DeepLink } from '../DeepLink/DeepLink';
+import { AppsflyerSpace } from './Appsflyer.namespace';
 
 // https://hq1.appsflyer.com
 // https://docs.google.com/spreadsheets/d/1PZ7x7WRoR53cX_z30wPWHAKMW9KqDKDD4RdPegyaeu8/edit#gid=0
@@ -21,13 +21,13 @@ export default class Appsflyer {
       dp_web,
       adSet,
       date,
-      ad,
+      ad
     } = data;
     return new Appsflyer(OneLinkID, {
       af_dp: DeepLink.create(dp_type, {
         contentId: dp_contentId || 0,
         additionPath: dp_additionPath,
-        categoryId: dp_categoryId || 0,
+        categoryId: dp_categoryId || 0
       }).setFunnel(`${'origin'}__${dp_funnel}`, dp_sub_funnel || '').value,
       pid: mediaSource || '', // id
       c: campaign || '',
@@ -48,7 +48,9 @@ export default class Appsflyer {
     for (let key in data) {
       list.push([key, data[key] || '']);
     }
-    this._value = `${Appsflyer.origin}/${OneLinkID}?${list.map(([key, value]) => (`${key}=${value}`)).join('&')}`;
+    this._value = `${Appsflyer.origin}/${OneLinkID}?${list
+      .map(([key, value]) => `${key}=${value}`)
+      .join('&')}`;
   }
   get value(): string {
     return this._value || '';

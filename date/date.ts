@@ -3,7 +3,7 @@ type WEEK = '일' | '월' | '화' | '수' | '목' | '금' | '토' | '';
 type FORMAT_NUMBER = 1;
 enum FORMAT {
   'YYYY.MM.DD (WEEK) AMPM HH:mm' = 1
-};
+}
 
 interface IDateStringObj {
   year: string;
@@ -14,7 +14,7 @@ interface IDateStringObj {
   hourAmPm: string;
   minutes: string;
   week: number;
-  weekText: string
+  weekText: string;
 }
 
 interface IGDWebModuleDate {
@@ -27,8 +27,8 @@ export default class GDWebModuleDate implements IGDWebModuleDate {
     if (GDWebModuleDate._instance) {
       return GDWebModuleDate._instance;
     }
-    return GDWebModuleDate._instance = GDWebModuleDate.create();
-  };
+    return (GDWebModuleDate._instance = GDWebModuleDate.create());
+  }
   static create(value: Date | string = null): GDWebModuleDate {
     return new GDWebModuleDate(value);
   }
@@ -38,12 +38,12 @@ export default class GDWebModuleDate implements IGDWebModuleDate {
       this._value = new Date(value);
     } else if (value instanceof Date) {
       this._value = value;
-    }  else {
+    } else {
       this._value = new Date();
     }
   }
   private toDate(date: Date | string | null): Date {
-    if(date === null) {
+    if (date === null) {
       return this._value;
     } else if (typeof date === 'string') {
       return new Date(date);
@@ -52,7 +52,7 @@ export default class GDWebModuleDate implements IGDWebModuleDate {
   }
   private toDateObj(value: Date): IDateStringObj {
     return {
-      year: ('' + value.getFullYear()),
+      year: '' + value.getFullYear(),
       month: this.getTwo(value.getMonth() + 1),
       day: this.getTwo(value.getDate()),
       hour: this.getTwo(value.getHours()),
@@ -68,9 +68,13 @@ export default class GDWebModuleDate implements IGDWebModuleDate {
     switch (format) {
       case FORMAT['YYYY.MM.DD (WEEK) AMPM HH:mm']:
       case 1:
-        return `${date.year}.${date.month}.${date.day} (${date.weekText}) ${date.hourText} ${date.hourAmPm}:${date.minutes}`;
+        return `${date.year}.${date.month}.${date.day} (${date.weekText}) ${date.hourText} ${
+          date.hourAmPm
+        }:${date.minutes}`;
     }
-    return `${date.year}.${date.month}.${date.day} (${date.weekText}) ${date.hourText} ${date.hourAmPm}:${date.minutes}`;
+    return `${date.year}.${date.month}.${date.day} (${date.weekText}) ${date.hourText} ${
+      date.hourAmPm
+    }:${date.minutes}`;
   }
   private getWeekText(number: number = null): WEEK {
     switch (number) {

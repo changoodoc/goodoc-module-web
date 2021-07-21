@@ -21,11 +21,7 @@ const ButtonHappyTalk: React.FC<IButtonHappyTalk> = ({ style, buttonType }) => {
   }, []);
 
   const openHappyTalk = () => {
-    window.open(
-      BUTTON_URL.happyTalk,
-      '',
-      `width=500, height=800, left=${innerWidth.current}`
-    );
+    window.open(BUTTON_URL.happyTalk, '', `width=500, height=800, left=${innerWidth.current}`);
   };
 
   return (

@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import "./style.css";
-import Icon from "./Icon";
+import './style.css';
+import Icon from './Icon';
 
 interface IButtonHappyTalk {
   style?: React.CSSProperties;

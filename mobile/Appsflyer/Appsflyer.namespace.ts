@@ -1,4 +1,4 @@
-import {DeepLinkSpace} from '../DeepLink/DeepLink.namespace';
+import { DeepLinkSpace } from '../DeepLink/DeepLink.namespace';
 
 export declare namespace AppsflyerSpace {
   interface Option {
@@ -16,7 +16,7 @@ export declare namespace AppsflyerSpace {
     dp_categoryId?: number;
     dp_web?: string; // 웹 링크 적용 없을경우 https://www.goodoc.co.kr
   }
-// 메인채널, 서브채널, 캠페인명, 광고 소재
+  // 메인채널, 서브채널, 캠페인명, 광고 소재
   interface Option2 {
     pid: string; // Eventzone
     c: string; // only_app
